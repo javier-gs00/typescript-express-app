@@ -12,7 +12,7 @@
 		"url": "https://github.com/javier-gs00/express_boilerplate"
 	},
 	"scripts": {
-		"build": "rm -rf dist && yarn build:js",
+		"build": "NODE_ENV=production rm -rf dist && yarn build:js",
 		"build:js": "babel src --out-dir dist --extensions \".ts\" --ignore \"src/**/*.test.ts\",\"src/**/*.test.js\" --source-maps inline",
 		"babel-watch": "babel src --watch --out-dir dist --extensions \".ts\" --ignore \"src/**/*.test.ts\",\"src/**/*.test.js\" --source-maps inline",
 		"docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
@@ -21,11 +21,12 @@
 		"lint:fix": "./node_modules/.bin/eslint '*/**/*.{js,ts}' --fix",
 		"start:dev": "./node_modules/.bin/nodemon --exec babel-node --inspect=0.0.0.0:9229 src/server.ts --extensions '.ts' --source-maps inline",
 		"start:docker:dev": "./node_modules/.bin/nodemon --watch ./dist --inspect=0.0.0.0:9229 dist/index.js",
-		"start:prod": "node dist/index.js",
+		"start:prod": "node dist/server.js",
 		"test": "./node_modules/.bin/jest",
 		"test:watch": "./node_modules/.bin/jest --watch --coverage",
 		"type-check": "./node_modules/.bin/tsc --noEmit",
-		"type-check:watch": "yarn type-check -- --watch"
+		"type-check:watch": "yarn type-check -- --watch",
+		"typeorm:cli": "./node_modules/typeorm/cli -f ./src/ormconfig.ts"
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.5.5",
@@ -42,6 +43,9 @@
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^5.6.9",
 		"morgan": "^1.9.1",
+		"pg": "^7.12.1",
+		"reflect-metadata": "^0.1.13",
+		"typeorm": "^0.2.18",
 		"winston": "^3.2.1"
 	},
 	"engines": {

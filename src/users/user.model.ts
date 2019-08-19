@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { User } from './user.interface';
+// import { User } from './user.interface';
 
 const addressSchema = new mongoose.Schema({
 	city: String,

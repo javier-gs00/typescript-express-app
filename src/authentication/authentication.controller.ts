@@ -7,7 +7,7 @@ import { UserWithThatEmailAlreadyExistsException } from 'Src/exceptions/user-wit
 import { WrongCredentialsException } from 'Src/exceptions/wrong-credentias-exception';
 import { validationMiddleware } from 'Src/middleware/validation.middleware';
 import { LogInDto } from './login.dto';
-import { User } from 'Src/users/user.interface';
+// import { User } from 'Src/users/user.interface';
 import { TokenData } from 'Src/interfaces/tokenData.interface';
 import { DataStoredInToken } from 'Src/interfaces/dataStoredInToken';
 import jwt from 'jsonwebtoken';
@@ -96,7 +96,7 @@ export class AuthenticationController implements Controller {
 		return `Authorization=${tokenData.token}; HttpOnly; Max-Age=${tokenData.expiresIn}`; // eslint-disable-line
 	}
 
-	private createToken(user: User): TokenData {
+	private createToken(user): TokenData {
 		const expiresIn = 60 * 60; // an hour
 		const secret: string = process.env.JWT_SECRET || '';
 		const dataStoredInToken: DataStoredInToken = {
