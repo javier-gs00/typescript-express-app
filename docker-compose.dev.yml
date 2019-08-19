@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  express_app_dev:
+    build:
+      dockerfile: ./docker/dev/Dockerfile
+      context: .
+    volumes:
+      - './src:/app/src'
+      - './dist:/app/dist'
+    ports:
+      - '8000:8000'
+      - '9229:9229'
+    command: yarn start:docker:dev
+    restart: always

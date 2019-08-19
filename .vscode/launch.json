@@ -1,0 +1,40 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Docker: Attach to Node",
+			"type": "node",
+			"request": "attach",
+			"smartStep": true,
+			"protocol": "inspector",
+			"restart": true,
+			"localRoot": "${workspaceFolder}/dist",
+			"remoteRoot": "/app/dist",
+			"sourceMaps": true,
+			"address": "0.0.0.0",
+			"port": 9229,
+			"trace": true,
+			"preLaunchTask": "babel-watch",
+			"outFiles": ["${workspaceFolder}/dist/**/*.js"],
+			"skipFiles": ["<node_internals>/**/*.js"]
+		},
+		{
+			"name": "Babel: Launch Program",
+			"type": "node",
+			"request": "launch",
+			"smartStep": true,
+			"protocol": "inspector",
+			"restart": true,
+			"sourceMaps": true,
+			"address": "0.0.0.0",
+			"port": 9229,
+			"trace": true,
+			"preLaunchTask": "build",
+			"outFiles": ["${workspaceFolder}/dist/**/*.js"],
+			"skipFiles": ["<node_internals>/**/*.js"]
+		}
+	]
+}
